@@ -44,6 +44,7 @@ namespace ECO_Farming_Buddy
             try
             {
                 CropHelper.LoadCrops(cropFileDialog.FileName);
+                RefreshFilters();
                 dataGrid_Crops.ItemsSource = m_FilteredCrops;
                 txt_CropFile.Text = cropFileDialog.FileName;
             }
@@ -68,6 +69,7 @@ namespace ECO_Farming_Buddy
 
         private void RefreshFilters()
         {
+            CropHelper.CalculateSuitability(m_CropTemperatureFilter, m_CropRainfallFilter);
             dataGrid_Crops.ItemsSource = m_FilteredCrops;
         }
 
@@ -80,9 +82,17 @@ namespace ECO_Farming_Buddy
         {
             bool rainRange = m_CropRainfallFilter.Between(crop.RainfallMinimum, crop.RainfallMaximum);
             bool tempRange = m_CropTemperatureFilter.Between(crop.TemperatureMinimum, crop.TemperatureMaximum);
+
             bool plantableFilter = chck_OnlyPlantable.IsChecked.Value;
             bool plantable = !string.IsNullOrEmpty(crop.PlantableSeeds);
-            return !chck_FilterCrops.IsChecked.Value || (rainRange && tempRange && (plantable || !plantableFilter));
+
+            bool optimalFilter = chck_OptimalOnly.IsChecked.Value;
+            bool optimal = crop.Optimal;
+
+            return !chck_FilterCrops.IsChecked.Value || 
+                    (rainRange && tempRange
+                    && (plantable || !plantableFilter)
+                    && (optimal || !optimalFilter));
         }
 
         private void chck_FilterCrops_Toggled(object sender, RoutedEventArgs e)
@@ -90,7 +100,12 @@ namespace ECO_Farming_Buddy
             RefreshFilters();
         }
 
-        private void chck_OnlyPlantable_Toggled(object sender, RoutedEventArgs e)
+        private void chck_PlantableOnly_Toggled(object sender, RoutedEventArgs e)
+        {
+            RefreshFilters();
+        }
+
+        private void chck_OptimalOnly_Toggled(object sender, RoutedEventArgs e)
         {
             RefreshFilters();
         }

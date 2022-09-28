@@ -26,9 +26,10 @@
         <Button x:Name="btn_Refresh" Content="Refresh Filters" Margin="10,66,10,0" VerticalAlignment="Top" Height="22" Grid.ColumnSpan="2" Click="btn_Refresh_Click"/>
         <CheckBox x:Name="chck_FilterCrops" Content="Filter Crops" HorizontalAlignment="Left" Margin="229,42,0,0" VerticalAlignment="Top" IsChecked="False" Checked="chck_FilterCrops_Toggled" Unchecked="chck_FilterCrops_Toggled"/>
         <Label x:Name="label3" Content="Crop File:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chck_EnableEditing" Content="Enable Editing" HorizontalAlignment="Left" Margin="450,42,0,0" VerticalAlignment="Top" IsChecked="False"/>
+        <CheckBox x:Name="chck_EnableEditing" Content="Enable Editing" HorizontalAlignment="Left" Margin="513,42,0,0" VerticalAlignment="Top" IsChecked="False"/>
         <Button x:Name="btn_Save" Content="Save" Margin="10,0,10,10" Click="btn_Save_Click" Height="20" VerticalAlignment="Bottom"/>
-        <CheckBox x:Name="chck_OnlyPlantable" Content="Show Plantable Only" HorizontalAlignment="Left" Margin="316,42,0,0" VerticalAlignment="Top" IsChecked="False" Checked="chck_OnlyPlantable_Toggled" Unchecked="chck_OnlyPlantable_Toggled"/>
+        <CheckBox x:Name="chck_OnlyPlantable" Content="Plantable Only" HorizontalAlignment="Left" Margin="316,42,0,0" VerticalAlignment="Top" IsChecked="False" Checked="chck_PlantableOnly_Toggled" Unchecked="chck_PlantableOnly_Toggled"/>
+        <CheckBox x:Name="chck_OptimalOnly" Content="Optimal Only" HorizontalAlignment="Left" Margin="418,42,0,0" VerticalAlignment="Top" Unchecked="chck_OptimalOnly_Toggled" Checked="chck_OptimalOnly_Toggled"/>
 
     </Grid>
 </Window>
