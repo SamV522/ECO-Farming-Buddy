@@ -4,8 +4,8 @@
     {
         public static bool Between(this decimal sourceDecimal, decimal min, decimal max)
         {
-            bool above = sourceDecimal > min;
-            bool below = sourceDecimal < max;
+            bool above = sourceDecimal >= min;
+            bool below = sourceDecimal <= max;
             return above && below;
         }
 
