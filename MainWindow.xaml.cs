@@ -3,6 +3,7 @@ using ECO_Farming_Buddy.Helpers;
 using ECO_Farming_Buddy.Models;
 using Microsoft.Win32;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -70,7 +71,7 @@ namespace ECO_Farming_Buddy
         private void RefreshFilters()
         {
             CropHelper.CalculateSuitability(m_CropTemperatureFilter, m_CropRainfallFilter);
-            dataGrid_Crops.ItemsSource = m_FilteredCrops;
+            dataGrid_Crops.ItemsSource = new ObservableCollection<Crop>(m_FilteredCrops);
         }
 
         private void btn_Refresh_Click(object sender, RoutedEventArgs e)
