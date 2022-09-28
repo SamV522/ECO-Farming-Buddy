@@ -81,8 +81,8 @@ namespace ECO_Farming_Buddy
 
         private bool IsWithinFilters(Crop crop)
         {
-            bool rainRange = m_CropRainfallFilter.Between(crop.RainfallMinimum, crop.RainfallMaximum);
-            bool tempRange = m_CropTemperatureFilter.Between(crop.TemperatureMinimum, crop.TemperatureMaximum);
+            bool rainRange = m_CropRainfallFilter.Within(crop.RainfallMinimum, crop.RainfallMaximum);
+            bool tempRange = m_CropTemperatureFilter.Within(crop.TemperatureMinimum, crop.TemperatureMaximum);
 
             bool plantableFilter = chck_OnlyPlantable.IsChecked.Value;
             bool plantable = !string.IsNullOrEmpty(crop.PlantableSeeds);

@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
 using ECO_Farming_Buddy.Extensions;
 using ECO_Farming_Buddy.Models;
+using ECO_Farming_Buddy.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -36,13 +37,27 @@ namespace ECO_Farming_Buddy.Helpers
         {
             foreach(Crop crop in Crops)
             {
-                decimal tempDiff = Math.Abs(temperature.DifferenceFromRange(crop.TemperatureOptimalMinimum, crop.TemperatureOptimalMaximum));
-                decimal rainDiff = Math.Abs(rainfall.DifferenceFromRange(crop.RainfallOptimalMinimum, crop.RainfallOptimalMaximum));
-                crop.Suitability = 1 - (tempDiff + rainDiff);
+                if (crop.Plant == "Beans")
+                {
+                    //continue;
+                }
 
-                bool optimalTemp = temperature.Between(crop.TemperatureOptimalMinimum, crop.TemperatureOptimalMaximum);
-                bool optimalRain = rainfall.Between(crop.RainfallOptimalMinimum, crop.RainfallOptimalMaximum);
-                crop.Optimal = optimalTemp && optimalRain;
+                decimal tempDiff = crop.OptimalTemperature - temperature;
+                decimal rainDiff = crop.OptimalRainfall - rainfall;
+
+                decimal tempLerp = temperature.InverseLerpRangeUnclamped(crop.OptimalTemperature, crop.TemperatureMinimum, crop.TemperatureMaximum);
+                decimal rainLerp = rainfall.InverseLerpRangeUnclamped(crop.OptimalRainfall, crop.RainfallMinimum, crop.RainfallMaximum);
+
+                decimal tempSuitability = Math.Round(1 - Math.Abs(tempLerp), 2);
+                decimal rainSuitability = Math.Round(1 - Math.Abs(rainLerp), 2);
+
+                
+                crop.Suitability = tempSuitability < 0 ? 0 : rainSuitability < 0 ? 0 : (tempSuitability + rainSuitability) / 2;
+
+                /* Optimal = Within Optimal Min/Max*/
+                bool isOptimalTemp = temperature.Within(crop.TemperatureOptimalMinimum, crop.TemperatureOptimalMaximum);
+                bool isOptimalRain = rainfall.Within(crop.RainfallOptimalMinimum, crop.RainfallOptimalMaximum);
+                crop.Optimal = isOptimalTemp && isOptimalRain;
             }
         }
     }

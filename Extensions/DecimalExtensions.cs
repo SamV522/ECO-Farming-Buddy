@@ -1,24 +1,43 @@
-﻿namespace ECO_Farming_Buddy.Extensions
+﻿using ECO_Farming_Buddy.Utilities;
+using System;
+using System.Windows.Navigation;
+
+namespace ECO_Farming_Buddy.Extensions
 {
     internal static class DecimalExtensions
     {
-        public static bool Between(this decimal sourceDecimal, decimal min, decimal max)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceDecimal"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns>Whether or not sourceDecimal is within min and max, inclusive</returns>
+        public static bool Within(this decimal sourceDecimal, decimal min, decimal max)
         {
             bool above = sourceDecimal >= min;
             bool below = sourceDecimal <= max;
             return above && below;
         }
 
-        public static decimal DifferenceFromRange(this decimal sourceDecimal, decimal min, decimal max)
+        /// <summary>
+        /// Lerp between 0 and 1, 0 being closest to target, and 1 being closest to min or max.
+        /// </summary>
+        /// <param name="sourceDecimal"></param>
+        /// <param name="target"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static decimal InverseLerpRangeUnclamped(this decimal sourceDecimal, decimal target, decimal min, decimal max)
         {
-            if(sourceDecimal < min)
+            if (sourceDecimal < target)
             {
-                return sourceDecimal - min;
+                return MathUtilities.InverseLerp(target, min, sourceDecimal);
             }
 
-            if(sourceDecimal > max)
+            if (sourceDecimal > target)
             {
-                return sourceDecimal - max;
+                return MathUtilities.InverseLerp(target, max, sourceDecimal);
             }
 
             return 0;
