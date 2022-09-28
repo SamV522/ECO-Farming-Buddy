@@ -32,7 +32,17 @@ namespace ECO_Farming_Buddy
                 CheckFileExists = true,
                 CheckPathExists = true
             };
+
             cropFileDialog.FileOk += CropFileDialog_FileOk;
+
+            /* Handle the event raised for unhandled exceptions */
+            Dispatcher.UnhandledException += Dispatcher_UnhandledException;
+        }
+
+        private void Dispatcher_UnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            /* Log the exception */
+            LogHelper.Log(e.Exception);
         }
 
         private void btn_OpenCropFileDialog_Click(object sender, RoutedEventArgs e)

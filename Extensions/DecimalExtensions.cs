@@ -1,6 +1,4 @@
 ﻿using ECO_Farming_Buddy.Utilities;
-using System;
-using System.Windows.Navigation;
 
 namespace ECO_Farming_Buddy.Extensions
 {
