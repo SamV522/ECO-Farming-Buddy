@@ -1,0 +1,54 @@
+Plant,Temp Min,Temp Max,Temp Opt Min,Temp Opt Max,Rainfall Min,Rainfall Max,Rainfall Opt Min,Rainfall Opt Max,Plantable Seed,Base Level Time To Maturity
+Agave,18,30,20,24,0,0.35,0.1,0.25,Agave Seed,16.8
+Arctic Willow,-6,2,-5.2,1.2,0.2,0.5,0.36,0.48,Arctic Willow Seed,14.4
+Barrel Cactus,18,30,22,26,0,0.38,0.1,0.2,Barrel Cactus Seed,14.4
+Beans,2,14,4,8,0.45,0.65,0.5,0.55,Beans,19.2
+Beet,6,22,10,12,0.3,0.5,0.32,0.35,Beet Seed,19.2
+Birch,-2.8,14,-1.6,10.8,0.45,0.61,0.48,0.58,Birch Seed,96
+Bolete Mushroom,14,22,16,20,0.7,1,0.75,0.95,Bolete Mushroom Seed,19.2
+Bunchgrass,6,22,14,16,0.3,0.6,0.4,0.45,Bunchgrass Seed,9.6
+Camas,6,22,14,18,0.45,0.65,0.45,0.55,Camas Bulb,19.2
+Cookeina Mushroom,14,22,16,20,0.45,0.61,0.48,0.58,Cedar Seed,96
+Cedar Tree,2,22.8,9.6,21.2,0.7,1,0.75,0.95,Ceiba Seed,144
+Ceiba Tree,14,22,16,20,0.7,1,0.75,0.95,Cookeina Mushroom Spore,19.2
+Corn,6,22,4,5.2,0.3,0.5,0.32,0.35,Corn Seed,19.2
+Creosote Bush,18,30,20,24,0,0.35,0.1,0.25,Creosote Bush Seed,14.4
+Crimini Mushrooms,14,22,16,20,0.7,1,0.75,0.95,Crimini Mushroom Spore,16.8
+Deer Lichen,-6,2.4,-5.6,-0.8,0,0.62,0.05,0.58,,16.8
+Desert Moss,18,30,24,28,0,0.35,0.2,0.25,,14.4
+Dwarf Willow,-6,-2,-5.6,-2.4,0.1,0.5,0.24,0.48,Dwarf Willow Seed,14.4
+Fern,6,22,8,12,0.45,0.65,0.5,0.55,Fern Spore,14.4
+Filmy Fern,14,22,16,20,0.7,1,0.75,0.95,Filmy Fern Spore,14.4
+Fir Tree,-2.4,6,-0.8,4,0.23,0.61,0.45,0.55,Fir Seed*,96
+Fireweed Shoots,-2,2,-0.4,1.2,0.2,0.5,0.44,0.48,Fireweed Seed,14.4
+Heliconia,14,22,16,20,0.28,0.52,0.32,0.48,,12
+Grass,9.2,22.8,10.8,21.2,0.7,1,0.75,0.95,Heliconia Seed,14.4
+Huckleberries,6,22,6.8,12,0.45,0.65,0.48,0.53,Huckleberry Seed,19.2
+Joshua Tree,16,22.4,18,21.2,0.19,0.36,0.23,0.3,,144
+Kelp,5.2,30,10,26,0,1,0.1,0.9,Kelp Seed*,24
+King Fern,14,22,16,20,0.7,1,0.75,0.95,King Fern Spore,14.4
+Lattice Mushroom,14,22,16,20,0.7,1,0.75,0.95,Lattice Mushroom Spore,16.8
+Lupine,-2,2,-0.4,1.2,0.2,0.5,0.44,0.48,Lupine Seed,16.8
+Oak Tree,6,22,8,20.4,0.4,0.5,0.43,0.47,Acorn,144
+Ocean Spray,6,22,16,20,0.45,0.65,0.5,0.55,Ocean Spray Seed,14.4
+Old Growth Redwood Tree,-2.8,10.8,-1.2,9.2,0.39,0.51,0.42,0.48,,24
+Orchid,14,22,16,20,0.7,1,0.75,0.95,Orchid Seed,16.8
+Palm,14,22,16,20,0.7,1,0.75,0.95,,96
+Papaya,14,22,16,20,0.7,1,0.75,0.95,Papaya Seed,14.4
+Pear Moss,-5.2,2,-3.2,1.2,0.2,0.5,0.44,0.48,,16.8
+Pineapple,14,22,16,20,0.7,1,0.75,0.95,Pineapple Seed,14.4
+Prickly Pear,18,30,18.8,24,0,0.35,0.25,0.35,Prickly Pear Seed,16.8
+Pumpkin,6,22,4,5.2,0.3,0.5,0.32,0.35,Pumpkin Seed,16.8
+Redwood Tree,-2.8,10.8,-1.2,9.2,0.39,0.51,0.42,0.48,Redwood Seed,120
+Rice,6,22,4,5.2,0.3,0.5,0.32,0.35,Rice,19.2
+Saguaro Cactus,18,30,22,26,0,0.38,0.1,0.2,,72
+Salal,-2.4,22.4,-1.2,21.2,0.48,0.62,0.52,0.58,,24
+Saxifrage,-4,2,-2.8,1.2,0.2,0.5,0.44,0.48,Saxifrage Seed,19.2
+Spruce Tree,-2.4,6,-0.8,4,0.23,0.61,0.45,0.55,Spruce Seed,96
+Switchgrass,5.2,14.8,6.8,14.8,0.28,0.52,0.32,0.48,,12
+Taro,14,22,16,20,0.7,1,0.75,0.95,Taro Seed,14.4
+Tomato,6,22,18,20,0.3,0.5,0.42,0.45,Tomato Seed,19.2
+Trillium,6,22,6.8,12,0.45,0.65,0.48,0.53,Trillium Seed,16.8
+Waterweed,5.2,30,10,26,0,1,0.1,0.9,Waterweed Seed*,24
+Wheat,6,22,12,13.2,0.3,0.5,0.32,0.35,Wheat Seed,16.8
+White Bursage,16,22.8,18,22,0.19,0.38,0.23,0.32,White Bursage Seed,16.8
