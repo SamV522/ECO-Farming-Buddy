@@ -1,0 +1,34 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ECO_Farming_Buddy"
+        xmlns:Models="clr-namespace:ECO_Farming_Buddy.Models" xmlns:Converters="clr-namespace:ECO_Farming_Buddy.DataBinding.Converters" x:Class="ECO_Farming_Buddy.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="684">
+    <Window.Resources>
+        <Converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Button x:Name="btn_OpenCropFileDialog" Content="..." Margin="0,10,10,0" VerticalAlignment="Top" Click="btn_OpenCropFileDialog_Click" HorizontalAlignment="Right" Width="36" Grid.Column="1"/>
+        <TextBox x:Name="txt_CropFile" Height="20" Margin="70,10,51,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" Grid.ColumnSpan="2"/>
+        <DataGrid x:Name="dataGrid_Crops" Margin="0,93,0,35" IsReadOnly="{Binding IsChecked, Converter={StaticResource InverseBooleanConverter}, ElementName=chck_EnableEditing}" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+            <DataGrid.DataContext>
+                <Models:Crop/>
+            </DataGrid.DataContext>
+        </DataGrid>
+        <Label x:Name="label" Content="Temperature:" Margin="10,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="79"/>
+        <TextBox x:Name="txt_Temperature" Margin="89,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Text="15.0" IsEnabled="{Binding IsChecked, ElementName=chck_FilterCrops}" HorizontalAlignment="Left" Width="35"/>
+        <Label x:Name="label1" Margin="129,35,0,0" VerticalAlignment="Top" Content="Rainfall:" HorizontalAlignment="Left" Width="51"/>
+        <TextBox x:Name="txt_Rainfall" HorizontalAlignment="Left" Margin="184,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="20" Height="22" Text="55" IsEnabled="{Binding IsChecked, ElementName=chck_FilterCrops}"/>
+        <Label x:Name="label2" Content="%" HorizontalAlignment="Left" Margin="204,35,0,0" VerticalAlignment="Top" Width="20"/>
+        <Button x:Name="btn_Refresh" Content="Refresh Filters" Margin="10,66,10,0" VerticalAlignment="Top" Height="22" Grid.ColumnSpan="2" Click="btn_Refresh_Click"/>
+        <CheckBox x:Name="chck_FilterCrops" Content="Filter Crops" HorizontalAlignment="Left" Margin="229,42,0,0" VerticalAlignment="Top" IsChecked="False" Checked="chck_FilterCrops_Toggled" Unchecked="chck_FilterCrops_Toggled"/>
+        <Label x:Name="label3" Content="Crop File:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chck_EnableEditing" Content="Enable Editing" HorizontalAlignment="Left" Margin="450,42,0,0" VerticalAlignment="Top" IsChecked="False"/>
+        <Button x:Name="btn_Save" Content="Save" Margin="10,0,10,10" Click="btn_Save_Click" Height="20" VerticalAlignment="Bottom"/>
+        <CheckBox x:Name="chck_OnlyPlantable" Content="Show Plantable Only" HorizontalAlignment="Left" Margin="316,42,0,0" VerticalAlignment="Top" IsChecked="False" Checked="chck_OnlyPlantable_Toggled" Unchecked="chck_OnlyPlantable_Toggled"/>
+
+    </Grid>
+</Window>

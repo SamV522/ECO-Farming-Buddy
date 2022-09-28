@@ -1,0 +1,98 @@
+﻿using ECO_Farming_Buddy.Extensions;
+using ECO_Farming_Buddy.Helpers;
+using ECO_Farming_Buddy.Models;
+using Microsoft.Win32;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Windows;
+
+namespace ECO_Farming_Buddy
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private OpenFileDialog cropFileDialog;
+
+        private IEnumerable<Crop> m_FilteredCrops => CropHelper.Crops.Where(crop => IsWithinFilters(crop));
+
+        private decimal m_CropTemperatureFilter => decimal.Parse(txt_Temperature.Text);
+        private decimal m_CropRainfallFilter => decimal.Parse(txt_Rainfall.Text) / 100;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            cropFileDialog = new OpenFileDialog
+            {
+                Filter = "Csv Files (*.csv)|*.csv|Txt Files (*.txt)|*.txt|All Files (*.*)|*.*",
+                Multiselect = false,
+                CheckFileExists = true,
+                CheckPathExists = true
+            };
+            cropFileDialog.FileOk += CropFileDialog_FileOk;
+        }
+
+        private void btn_OpenCropFileDialog_Click(object sender, RoutedEventArgs e)
+        {
+            cropFileDialog.ShowDialog();
+        }
+
+        private void CropFileDialog_FileOk(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                CropHelper.LoadCrops(cropFileDialog.FileName);
+                dataGrid_Crops.ItemsSource = m_FilteredCrops;
+                txt_CropFile.Text = cropFileDialog.FileName;
+            }
+            catch (IOException ex) when (ex.Message.Substring(0, 35) == "The process cannot access the file ")
+            {
+                MessageBox.Show("The file you have selected is in use, please close the file and try again", "File in use", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void btn_Save_Click(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(cropFileDialog.FileName))
+            {
+                // this is broken for now, work it out.
+                //CropHelper.SaveCrops(cropFileDialog.FileName);
+            }
+            else
+            {
+                MessageBox.Show("The file you have specified does not exist", "File does not exist", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void RefreshFilters()
+        {
+            dataGrid_Crops.ItemsSource = m_FilteredCrops;
+        }
+
+        private void btn_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshFilters();
+        }
+
+        private bool IsWithinFilters(Crop crop)
+        {
+            bool rainRange = m_CropRainfallFilter.Between(crop.RainfallMinimum, crop.RainfallMaximum);
+            bool tempRange = m_CropTemperatureFilter.Between(crop.TemperatureMinimum, crop.TemperatureMaximum);
+            bool plantableFilter = chck_OnlyPlantable.IsChecked.Value;
+            bool plantable = !string.IsNullOrEmpty(crop.PlantableSeeds);
+            return !chck_FilterCrops.IsChecked.Value || (rainRange && tempRange && (plantable || !plantableFilter));
+        }
+
+        private void chck_FilterCrops_Toggled(object sender, RoutedEventArgs e)
+        {
+            RefreshFilters();
+        }
+
+        private void chck_OnlyPlantable_Toggled(object sender, RoutedEventArgs e)
+        {
+            RefreshFilters();
+        }
+    }
+}
