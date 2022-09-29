@@ -25,7 +25,7 @@ namespace ECO_Farming_Buddy.Helpers
 
         public static void SaveCrops(string Path)
         {
-            using (var writer = new StreamWriter(Path, new FileStreamOptions() { Access = FileAccess.ReadWrite }))
+            using (var writer = new StreamWriter(Path, new FileStreamOptions() { Access = FileAccess.ReadWrite, Mode = FileMode.Truncate }))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 csv.WriteRecords(Crops);

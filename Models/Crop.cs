@@ -5,6 +5,7 @@ namespace ECO_Farming_Buddy.Models
 {
     internal class Crop
     {
+        [Name("Plant")]
         public string Plant { get; set; }
         [Name("Temp Min")]
         public decimal TemperatureMinimum { get; set; }

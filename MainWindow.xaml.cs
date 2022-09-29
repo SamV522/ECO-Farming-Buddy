@@ -69,8 +69,15 @@ namespace ECO_Farming_Buddy
         {
             if (File.Exists(cropFileDialog.FileName))
             {
-                // this is broken for now, work it out.
-                //CropHelper.SaveCrops(cropFileDialog.FileName);
+                try
+                {
+                    CropHelper.SaveCrops(cropFileDialog.FileName);
+                    MessageBox.Show("Your changes were saved successfully!", "Saved Changes", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch
+                {
+                    throw;
+                }
             }
             else
             {
